@@ -118,6 +118,10 @@ window.addEventListener('message', function(event) {
 # ══════════════════════════════════════════════════════
 # LLM + SESSION
 # ══════════════════════════════════════════════════════
+# CLOUD SECURITY: Force system to read Streamlit Secrets
+if "GOOGLE_API_KEY" in st.secrets:
+    os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+
 llm = ChatGoogleGenerativeAI(model="gemini-flash-lite-latest", temperature=0)
 
 if "messages" not in st.session_state:
